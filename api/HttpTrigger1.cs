@@ -62,6 +62,15 @@ namespace Company.Function
             return new OkObjectResult("Completed");
         }
 
+        [FunctionName("Message")]
+        [OpenApiOperation(operationId: "RunMessage")]
+        [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
+        public static async Task<IActionResult> RunMessage(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            return new OkObjectResult("Response from function Message");
+        }
+
         public class TestObject
         {
             public string TestProperty { get; set; }
